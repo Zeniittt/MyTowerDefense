@@ -1,23 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    private Rigidbody2D rb;
 
     public float moveSpeed;
-    public LayerMask towerLayer;
+    public int damage;
+    public int maxhealth;
+    public int currentHealth;
 
     void Start()
     {
-        
+        currentHealth = maxhealth;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 movement = new Vector3(0,-1,0) * moveSpeed * Time.deltaTime;
-        transform.position += movement;
+         rb.velocity = new Vector2(0, -moveSpeed);
+
+        if (currentHealth <= 0)
+            Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -25,6 +32,20 @@ public class EnemyController : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Tower"))
         {
             moveSpeed = 0;
-        }
+            StartCoroutine(Attack(1.5f, collision.GetComponent<TowerController>()));
+        } 
+    }
+
+    public void DescreaseHealth(int amount)
+    {
+        currentHealth -= amount;
+    }
+
+
+    IEnumerator Attack(float delay, TowerController tower)
+    {
+        yield return new WaitForSeconds(delay);
+        Debug.Log("enemy attack");
+        tower.DescreaseHealth(damage);
     }
 }

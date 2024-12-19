@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3438007355584973561}
   - component: {fileID: -2402569458538235951}
   - component: {fileID: 7001545467126144893}
+  - component: {fileID: 7681839192746207034}
   m_Layer: 6
   m_Name: Tower1
   m_TagString: Untagged
@@ -165,3 +166,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &7681839192746207034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8210252239826813327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74e03f9681e797c4eb560a0125013b6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 736321376970325184, guid: 61f03284f9e75d640bf5907c5c61ccba, type: 3}
+  damage: 1
+  maxHealth: 5
+  currentHealth: 0
