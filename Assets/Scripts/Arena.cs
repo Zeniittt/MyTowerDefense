@@ -15,7 +15,8 @@ public class Arena : MonoBehaviour
     private Vector3 startCellEnemyPosition;
     private Vector3 startCellTowerPosition;
 
-    private GameObject enemySpawner;
+    public GameObject enemySpawner;
+    public GameObject towerArena;
 
 
 
@@ -23,7 +24,6 @@ public class Arena : MonoBehaviour
 
     void Start()
     {
-        enemySpawner = GameObject.Find("EnemySpawner");
         startCellSpawnPosition = transform.position;
         GenerateMap();
     }
@@ -63,7 +63,7 @@ public class Arena : MonoBehaviour
             for (int col = 0; col < cellColumns; col++)
             {
                 Vector3 cellPosition = startCellTowerPosition + new Vector3(col * cellSize, row * -cellSize, 0);
-                GameObject newCell = Instantiate(cellTowerPrefab, cellPosition, Quaternion.identity, transform);
+                GameObject newCell = Instantiate(cellTowerPrefab, cellPosition, Quaternion.identity, towerArena.transform);
             }
         }
     }

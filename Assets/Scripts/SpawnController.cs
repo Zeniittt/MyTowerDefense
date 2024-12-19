@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using TreeEditor;
 using UnityEngine;
 
 public class SpawnController : MonoBehaviour
@@ -30,7 +27,7 @@ public class SpawnController : MonoBehaviour
     void SpawnEnemy()
     {
         positionSpawn = Random.Range(1, 5);
-        if(spawnCount < 4)
+        if (spawnCount < 4)
         {
             spawnCount++;
         }
@@ -41,11 +38,12 @@ public class SpawnController : MonoBehaviour
         if (cellSpawn != null)
         {
             Vector3 position = cellSpawn.position;
-            if(spawnCount == 4)
+            if (spawnCount == 4)
             {
                 GameObject newCell = Instantiate(bossEnemy, position, Quaternion.identity, enemies.transform);
                 spawnCount = 0;
-            } else
+            }
+            else
             {
                 GameObject newCell = Instantiate(normalEnemy, position, Quaternion.identity, enemies.transform);
             }
